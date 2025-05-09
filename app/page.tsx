@@ -223,7 +223,7 @@ export default function HomePage() {
                       />
                     </svg>
                   </div>
-                  <span className="text-gray-600">eagles.team@example.com</span>
+                  <span className="text-gray-600">eagles.team@gmail.com</span>
                 </div>
 
                 <div className="flex items-center">

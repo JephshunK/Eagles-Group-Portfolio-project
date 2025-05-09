@@ -3,6 +3,10 @@ import { Linkedin, Github, Twitter, Mail, User } from "lucide-react"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import { teamMembers } from "@/data/team-members"
+import Link from "next/link"
+import { ChevronRight } from "lucide-react"
+import TestimonialCard from "@/components/testimonial-card"
+import { testimonials } from "@/data/testimonials"
 
 export default function TeamPage() {
   return (
@@ -17,7 +21,7 @@ export default function TeamPage() {
             meaningful digital experiences.
           </p>
 
-          <div className="space-y-24">
+          <div className="space-y-24 mb-24">
             {teamMembers.map((member, index) => (
               <div
                 key={member.id}
@@ -48,7 +52,7 @@ export default function TeamPage() {
                     <p>{member.longBio || member.bio}</p>
                   </div>
 
-                  <div className="flex space-x-4">
+                  <div className="flex space-x-4 mb-6">
                     {member.social?.linkedin && (
                       <a
                         href={member.social.linkedin}
@@ -93,10 +97,38 @@ export default function TeamPage() {
                       <Mail size={20} />
                     </a>
                   </div>
+
+                  <Link
+                    href={`/team/${member.name.toLowerCase()}`}
+                    className="inline-flex items-center px-4 py-2 bg-teal-600 text-white rounded-md hover:bg-teal-700 transition-colors"
+                  >
+                    View Profile
+                    <ChevronRight className="ml-2 h-4 w-4" />
+                  </Link>
                 </div>
               </div>
             ))}
           </div>
+
+          {/* Testimonials Section */}
+          <section className="py-12 bg-gray-50 rounded-lg mb-20">
+            <div className="container mx-auto px-4">
+              <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">What People Say About Us</h2>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {testimonials.slice(0, 6).map((testimonial) => (
+                  <TestimonialCard
+                    key={testimonial.id}
+                    content={testimonial.content}
+                    author={testimonial.author}
+                    role={testimonial.role}
+                    company={testimonial.company}
+                    imageSrc={testimonial.imageSrc}
+                  />
+                ))}
+              </div>
+            </div>
+          </section>
         </div>
       </main>
 
