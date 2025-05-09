@@ -10,9 +10,9 @@ interface TestimonialCardProps {
 
 export default function TestimonialCard({ content, author, role, company, imageSrc }: TestimonialCardProps) {
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md">
-      <div className="flex items-center mb-4">
-        <div className="text-teal-600 mr-2">
+    <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+      <div className="mb-4">
+        <div className="text-teal-600 mb-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -24,11 +24,11 @@ export default function TestimonialCard({ content, author, role, company, imageS
             <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
           </svg>
         </div>
-        <div className="text-gray-500 italic">{content}</div>
+        <div className="text-gray-600 italic">{content}</div>
       </div>
-      <div className="flex items-center">
+      <div className="flex items-center mt-6">
         {imageSrc && (
-          <div className="relative w-12 h-12 rounded-full overflow-hidden mr-4">
+          <div className="relative w-12 h-12 rounded-full overflow-hidden mr-4 border border-gray-200">
             <Image src={imageSrc || "/placeholder.svg"} alt={author} fill className="object-cover" />
           </div>
         )}
